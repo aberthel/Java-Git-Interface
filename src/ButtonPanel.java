@@ -1,7 +1,7 @@
 /**
  * Main button interface. Buttons navigate to frames which have different features.
  * Author: Ana Berthel
- * Date: May 3, 2018
+ * Date: May 5, 2018
  */
 
 import java.awt.HeadlessException;
@@ -162,6 +162,11 @@ public class ButtonPanel extends JPanel implements ActionListener{
 			commitFiles();
 		} else if (c.equals("commit2")) { //make the new commit and update the main frame accordingly
 			box.commit();
+			try {
+				rbase.getCommits();
+			} catch (IOException | GitAPIException e1) {
+				e1.printStackTrace();
+			}
 			rdf.updateText();
 			rdf.updateFiles();
 		} else if (c.equals("commit search")) { //open UI to search commit messages
